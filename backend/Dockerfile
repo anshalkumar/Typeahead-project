@@ -2,12 +2,12 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY backend/requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy source and dataset into container
-COPY . /app/backend
+COPY backend /app/backend
 COPY dataset /app/dataset
 
 # Ensure the database path resolves correctly inside the container
