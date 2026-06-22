@@ -1,0 +1,26 @@
+# Frontend dependencies and build output
+frontend/node_modules/
+frontend/dist/
+
+# Dataset source and generated output
+dataset/user-ct-test-collection-02.txt
+dataset/query_counts.csv
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Editor and OS files
+.idea/
+.vscode/
+.DS_Store
+
+# Runtime artifacts
+core
+core.*
+*.log

@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "18080:18080"
+    environment:
+      - TYPEAHEAD_DATASET_PATH=/app/dataset/query_counts.csv
+    volumes:
+      - ./dataset:/app/dataset
+      - ./backend:/app/backend
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_BACKEND_URL=http://backend:18080
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      # Do not map node_modules folder from local machine into container
+      - /app/node_modules
